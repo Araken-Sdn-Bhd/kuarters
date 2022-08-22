@@ -1,17 +1,13 @@
 
 <?php
-session_start();
-include 'db_conn.php'; 
+
+
 
 $aid=$_SESSION['aid']; //Need to be fetch using session when login
-
 $query=mysqli_query($conn,"SELECT * from user where id= '$aid'");
 $ret=mysqli_fetch_array($query);
 
-if(strlen($_SESSION['aid']==0)){ 
-	header('location: logout.php');
-}
-else {
+
 
 ?>
 
@@ -442,4 +438,4 @@ else {
 
 </nav>
                 <!-- End of Topbar -->
-                                     <?php   } ?>
+                                     

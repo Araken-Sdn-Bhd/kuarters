@@ -1,10 +1,9 @@
 
 <?php
-session_start();
-include 'db_conn.php'; 
+
+
 
 $aid=$_SESSION['aid']; //Need to be fetch using session when login
-
 $query=mysqli_query($conn,"SELECT * from user where id= '$aid'");
 $ret=mysqli_fetch_array($query);
 
@@ -283,7 +282,7 @@ else {
                 Log Aktiviti
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+            <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> <!--Redirect page-->
                 Logout
             </a>

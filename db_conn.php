@@ -1,7 +1,5 @@
 <?php 
 
-$_SESSION['aid']=1;
-
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";

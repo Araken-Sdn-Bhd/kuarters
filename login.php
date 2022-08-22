@@ -1,7 +1,9 @@
 <?php
 
 include('db_conn.php');
+
 session_start();
+
 ?>
 
 <!doctype html>
@@ -52,7 +54,7 @@ if (isset($_POST['login'])){
 	
   $no_tentera = $_POST['no_tentera'];
   $psd= $_POST['psd'];
-  $query = "SELECT * FROM user WHERE BINARY no_tentera= BINARY '$no_tentera' and psd= BINARY '$psd'";
+  $query = "SELECT * FROM user WHERE BINARY no_tentera= BINARY '$no_tentera' and BINARY psd= BINARY '$psd'";
   $results = mysqli_query($conn , $query);
 
 
@@ -61,18 +63,18 @@ if (isset($_POST['login'])){
 
   if (mysqli_num_rows($results) == 1) 
 { 
-        $query=mysqli_query($conn,"SELECT * from user WHERE BINARY no_tentera= BINARY '$no_tentera' and psd= BINARY '$psd'");
+        $query=mysqli_query($conn,"SELECT * from user WHERE BINARY  no_tentera=  BINARY '$no_tentera' and BINARY psd= BINARY '$psd'");
         $ret=mysqli_fetch_array($query);
 
-              if($ret['type_user']=='poweruser'){
+              if($ret>0 && $ret['type_user']=='poweruser'){
 
-                      $_SESSION['aid']=$ret['no_tentera'];		
+                      $_SESSION['aid']=$ret['id'];		
               
                       header('location: poweruser/index.php');
 
-              } else {
+              } else if($ret>0 && $ret['type_user']=='user') {
 
-                  $_SESSION['aid']=$ret['no_tentera'];		
+                  $_SESSION['aid']=$ret['id'];	
               
                   header('location: user/index.php');
                   
@@ -90,3 +92,4 @@ else{
 
   </body>
 </html>
+

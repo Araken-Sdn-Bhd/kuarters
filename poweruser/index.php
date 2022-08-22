@@ -1,3 +1,13 @@
+<?php
+session_start();
+include 'db_conn.php'; 
+if(strlen($_SESSION['aid']==0)){ 
+	header('location: logout.php');
+}
+else {
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -508,7 +518,7 @@ include 'unit_calculation.php';
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -538,3 +548,5 @@ include 'unit_calculation.php';
 </body>
 
 </html>
+
+<?php   } ?>
